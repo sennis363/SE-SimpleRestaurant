@@ -58,6 +58,7 @@ public class MainServlet extends HttpServlet {
         result.add(finalPrice);
 
         request.setAttribute("result", result);
+        request.setAttribute("fruit", value);
 
 //        if (value.equals("apple")) {
 //
