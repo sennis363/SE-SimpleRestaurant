@@ -6,7 +6,9 @@
         <title>Output</title>
     </head>
     <body>
-        <h1><center>price/tax/tip/final price</center></h1>
+        <h1>Thank you for placing an order!</h1>
+        <br/>
+        <h1>price/tax/tip/final price</h1>
         <%
             if (request.getAttribute("result1") != null) {
                 Object output = request.getAttribute("result1");

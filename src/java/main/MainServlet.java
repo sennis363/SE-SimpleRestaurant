@@ -4,7 +4,6 @@ package main;
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import main.RestaurantFunctions;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -24,6 +23,10 @@ import javax.servlet.http.HttpServletResponse;
 public class MainServlet extends HttpServlet {
 
     private static final String OUTPUT_PAGE = "outputForm.jsp";
+    private static double price;
+    private static double tax;
+    private static double tip;
+    private static double finalPrice;
 
     /**
      * Processes requests for both HTTP
@@ -39,88 +42,90 @@ public class MainServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        //RestaurantFunctions rf = new RestaurantFunctions();
-        Test rf = new Test();
+        RestaurantFunctions rf = new RestaurantFunctions();
         DecimalFormat df = new DecimalFormat("#.##");
         String value = request.getParameter("food");
-        double price;
-        double tax;
-        double tip;
-        if (value.equals("apple")) {
 
-            double finalPrice1;
+        price = rf.displayPrice(value);
+        tax = rf.addTax(price);
+        tip = rf.suggestedTip(value);
+        finalPrice = rf.finalPrice(value);
 
-            price = rf.displayPrice("apple");
-            tax = rf.addTax(price);
-            tip = rf.suggestedTip("apple");
-            finalPrice1 = rf.finalPrice("apple");
+        List result = new ArrayList();
+        result.add(price);
+        result.add(df.format(tax));
+        result.add(tip);
+        result.add(finalPrice);
 
-            List result1 = new ArrayList();
-            result1.add(price);
-            result1.add(df.format(tax));
-            result1.add(tip);
-            result1.add(finalPrice1);
+        request.setAttribute("result", result);
 
-            request.setAttribute("result1", result1);
-
-        }
-        
-        if (value.equals("banana")) {
-
-            double finalPrice2;
-
-            price = rf.displayPrice("banana");
-            tax = rf.addTax(price);
-            tip = rf.suggestedTip("banana");
-            finalPrice2 = rf.finalPrice("banana");
-
-            List result2 = new ArrayList();
-            result2.add(price);
-            result2.add(df.format(tax));
-            result2.add(tip);
-            result2.add(finalPrice2);
-
-            request.setAttribute("result2", result2);
-
-        }
-        
-        if (value.equals("coconut")) {
-
-            double finalPrice3;
-
-            price = rf.displayPrice(value);
-            tax = rf.addTax(price);
-            tip = rf.suggestedTip(value);
-            finalPrice3 = rf.finalPrice(value);
-
-            List result3 = new ArrayList();
-            result3.add(price);
-            result3.add(df.format(tax));
-            result3.add(tip);
-            result3.add(finalPrice3);
-
-            request.setAttribute("result3", result3);
-
-        }
-        
-        if (value.equals("date")) {
-
-            double finalPrice4;
-
-            price = rf.displayPrice(value);
-            tax = rf.addTax(price);
-            tip = rf.suggestedTip(value);
-            finalPrice4 = rf.finalPrice(value);
-
-            List result4 = new ArrayList();
-            result4.add(price);
-            result4.add(df.format(tax));
-            result4.add(tip);
-            result4.add(finalPrice4);
-
-            request.setAttribute("result4", result4);
-
-        }
+//        if (value.equals("apple")) {
+//
+//            price = rf.displayPrice("apple");
+//            tax = rf.addTax(price);
+//            tip = rf.suggestedTip("apple");
+//            finalPrice = rf.finalPrice("apple");
+//
+//            List result1 = new ArrayList();
+//            result1.add(price);
+//            result1.add(df.format(tax));
+//            result1.add(tip);
+//            result1.add(finalPrice);
+//
+//            request.setAttribute("result1", result1);
+//
+//        }
+//
+//        if (value.equals("banana")) {
+//
+//            price = rf.displayPrice("banana");
+//            tax = rf.addTax(price);
+//            tip = rf.suggestedTip("banana");
+//            finalPrice = rf.finalPrice("banana");
+//
+//            List result2 = new ArrayList();
+//            result2.add(price);
+//            result2.add(df.format(tax));
+//            result2.add(tip);
+//            result2.add(finalPrice);
+//
+//            request.setAttribute("result2", result2);
+//
+//        }
+//
+//        if (value.equals("coconut")) {
+//
+//            price = rf.displayPrice(value);
+//            tax = rf.addTax(price);
+//            tip = rf.suggestedTip(value);
+//            finalPrice = rf.finalPrice(value);
+//
+//            List result3 = new ArrayList();
+//            result3.add(price);
+//            result3.add(df.format(tax));
+//            result3.add(tip);
+//            result3.add(finalPrice);
+//
+//            request.setAttribute("result3", result3);
+//
+//        }
+//
+//        if (value.equals("date")) {
+//
+//            price = rf.displayPrice(value);
+//            tax = rf.addTax(price);
+//            tip = rf.suggestedTip(value);
+//            finalPrice = rf.finalPrice(value);
+//
+//            List result4 = new ArrayList();
+//            result4.add(price);
+//            result4.add(df.format(tax));
+//            result4.add(tip);
+//            result4.add(finalPrice);
+//
+//            request.setAttribute("result4", result4);
+//
+//        }
 
         RequestDispatcher view =
                 request.getRequestDispatcher(OUTPUT_PAGE);
