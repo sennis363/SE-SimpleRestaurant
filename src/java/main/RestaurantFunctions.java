@@ -44,18 +44,8 @@ public class RestaurantFunctions {
     }
 
     public double calculateFinalPrice(Double price, Double tax, Double tip) {
-//        if (fruit == "apple") {
-//            return 5.85;
-//        } else if (fruit == "banana") {
-//            return 7.40;
-//        } else if (fruit == "coconut") {
-//            return 11.70;
-//        } else {
-//            return 7.20;
-//        }
-        
         Double finalPrice = price + tax + tip;
         return finalPrice;
-        
+
     }
 }

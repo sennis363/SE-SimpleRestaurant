@@ -1,7 +1,7 @@
 <%-- 
     Document   : inputForm
     Created on : Feb 4, 2013, 6:20:22 PM
-    Author     : Michael
+    Author     : Sean Ennis
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
