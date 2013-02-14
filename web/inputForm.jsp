@@ -15,7 +15,7 @@
         <center><h1>Simple Restaurant</h1></center>
         <p>Choose your food item, but you only get to choose 1!</p>
         <form id ="form1" name="form1" method="POST" action="MainServlet.do">
-            <input type="radio" name="food" value="apple">Apple<br/>
+            <input type="radio" name="food" value="apple" checked="true">Apple<br/>
             <input type="radio" name="food" value="banana">Banana<br/>
             <input type="radio" name="food" value="coconut">Coconut<br/>
             <input type="radio" name="food" value="date">Date

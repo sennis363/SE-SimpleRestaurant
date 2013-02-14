@@ -8,22 +8,22 @@
     <body>
         <h1>Thank you for placing an order!</h1>
         <br/>
-        <h1>price/tax/tip/final price</h1>
+        <h4>item: [price/tax/tip/final price]</h4>
         <%
-            if (request.getAttribute("result1") != null) {
-                Object output = request.getAttribute("result1");
-                out.println("APPLE: " + output);
-            } else if (request.getAttribute("result2") != null) {
-                Object output = request.getAttribute("result2");
-                out.println("BANANA: " + output);
-            } else if (request.getAttribute("result3") != null) {
-                Object output = request.getAttribute("result3");
-                out.println("COCONUT: " + output);
-            } else if (request.getAttribute("result4") != null) {
-                Object output = request.getAttribute("result4");
-                out.println("DATE: " + output);
+            if (request.getAttribute("result") != null || request.getAttribute("result") != "") {
+                String fruit = request.getAttribute("fruit").toString();
+                Object output = request.getAttribute("result");
+                if (fruit.equals("apple")) {
+                    out.println("APPLE: " + output);
+                } else if (fruit.equals("banana")) {
+                    out.println("BANANA: " + output);
+                } else if (fruit.equals("coconut")) {
+                    out.println("COCONUT: " + output);
+                } else {
+                    out.println("DATE: " + output);
+                }
             }
         %>
-            <h3><a href="inputForm.jsp">Go back</a></h3>
+        <h3><a href="inputForm.jsp">Go back</a></h3>
     </body>
 </html>
